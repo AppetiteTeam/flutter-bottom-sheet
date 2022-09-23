@@ -103,7 +103,7 @@ class FlexibleBottomSheet extends StatefulWidget {
   final VoidCallback? onDismiss;
   final Color? keyboardBarrierColor;
   final Color? bottomSheetColor;
-  final double? borderTopRadius;
+  final double borderTopRadius;
 
   FlexibleBottomSheet({
     Key? key,
@@ -235,7 +235,7 @@ class _FlexibleBottomSheetState extends State<FlexibleBottomSheet> {
             child: Container(
               decoration: BoxDecoration(
                 color: widget.bottomSheetColor ?? Theme.of(context).bottomSheetTheme.backgroundColor ?? Theme.of(context).backgroundColor,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(borderTopRadius), topRight: Radius.circular(borderTopRadius)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(widget.borderTopRadius), topRight: Radius.circular(widget.borderTopRadius)),
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
