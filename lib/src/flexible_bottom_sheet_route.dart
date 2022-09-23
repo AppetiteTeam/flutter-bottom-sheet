@@ -234,7 +234,7 @@ class _FlexibleBottomSheetRoute<T> extends PopupRoute<T> {
     this.bottomSheetColor,
     this.barrierBottomSheetColor,
     this.duration,
-    this.borderTopRadius,
+    this.borderTopRadius = 0.0,
     RouteSettings? settings,
   }) : super(settings: settings);
 
