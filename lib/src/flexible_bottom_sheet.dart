@@ -104,6 +104,7 @@ class FlexibleBottomSheet extends StatefulWidget {
   final VoidCallback? onDismiss;
   final Color? keyboardBarrierColor;
   final Color? bottomSheetColor;
+  final double? borderTopRadius;
 
   FlexibleBottomSheet({
     Key? key,
@@ -123,6 +124,7 @@ class FlexibleBottomSheet extends StatefulWidget {
     this.onDismiss,
     this.keyboardBarrierColor,
     this.bottomSheetColor,
+    this.borderTopRadius = 0.0,
   })  : assert(minHeight >= 0 && minHeight <= 1),
         assert(maxHeight > 0 && maxHeight <= 1),
         assert(maxHeight > minHeight),
@@ -147,6 +149,7 @@ class FlexibleBottomSheet extends StatefulWidget {
     Decoration? decoration,
     Color? keyboardBarrierColor,
     Color? bottomSheetColor,
+    double borderTopRadius = 0.0,
   }) : this(
           key: key,
           maxHeight: maxHeight,
@@ -164,6 +167,7 @@ class FlexibleBottomSheet extends StatefulWidget {
           decoration: decoration,
           keyboardBarrierColor: keyboardBarrierColor,
           bottomSheetColor: bottomSheetColor,
+          borderTopRadius: borderTopRadius,
         );
 
   @override
@@ -229,10 +233,12 @@ class _FlexibleBottomSheetState extends State<FlexibleBottomSheet> {
                 );
               }
             },
-            child: Scaffold(
-              backgroundColor: widget.bottomSheetColor ??
+            child: Container(decoration: BoxDecoration(widget.bottomSheetColor ??
                   Theme.of(context).bottomSheetTheme.backgroundColor ??
-                  Theme.of(context).backgroundColor,
+                  Theme.of(context).backgroundColor, 
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(borderTopRadius), topRight: Radius.circular(borderTopRadius)),
+                  ),  child: Scaffold(
+            
               body: _Content(
                 builder: widget.builder,
                 decoration: widget.decoration,
@@ -248,6 +254,7 @@ class _FlexibleBottomSheetState extends State<FlexibleBottomSheet> {
                 getContentHeight:
                     !widget.isExpand ? _changeInitAndMaxHeight : null,
               ),
+            ),
             ),
           );
         },
