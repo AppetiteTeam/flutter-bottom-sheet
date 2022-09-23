@@ -233,6 +233,7 @@ class _FlexibleBottomSheetState extends State<FlexibleBottomSheet> {
               }
             },
             child: Container(
+              clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 color: widget.bottomSheetColor ?? Theme.of(context).bottomSheetTheme.backgroundColor ?? Theme.of(context).backgroundColor,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(widget.borderTopRadius), topRight: Radius.circular(widget.borderTopRadius)),
