@@ -58,6 +58,7 @@ Future<T?> showFlexibleBottomSheet<T>({
   Duration? duration,
   bool isSafeArea = false,
   BoxDecoration? decoration,
+  double borderTopRadius = 0.0,
 }) {
   assert(debugCheckHasMediaQuery(context));
   assert(debugCheckHasMaterialLocalizations(context));
@@ -82,6 +83,7 @@ Future<T?> showFlexibleBottomSheet<T>({
       duration: duration,
       isSafeArea: isSafeArea,
       decoration: decoration,
+      borderTopRadius: borderTopRadius,
     ),
   );
 }
@@ -136,6 +138,7 @@ Future<T?> showStickyFlexibleBottomSheet<T>({
   Color? barrierColor,
   Duration? duration,
   bool isSafeArea = false,
+  double borderTopRadius = 0.0,
 }) {
   assert(maxHeaderHeight != null || headerHeight != null);
   assert(debugCheckHasMediaQuery(context));
@@ -164,6 +167,7 @@ Future<T?> showStickyFlexibleBottomSheet<T>({
       barrierBottomSheetColor: barrierColor,
       duration: duration,
       isSafeArea: isSafeArea,
+      borderTopRadius: borderTopRadius,
     ),
   );
 }
@@ -190,6 +194,7 @@ class _FlexibleBottomSheetRoute<T> extends PopupRoute<T> {
   final Color? barrierBottomSheetColor;
   final Duration? duration;
   final bool isSafeArea;
+  final double borderTopRadius;
 
   @override
   final String? barrierLabel;
@@ -229,6 +234,7 @@ class _FlexibleBottomSheetRoute<T> extends PopupRoute<T> {
     this.bottomSheetColor,
     this.barrierBottomSheetColor,
     this.duration,
+    this.borderTopRadius,
     RouteSettings? settings,
   }) : super(settings: settings);
 
@@ -267,6 +273,7 @@ class _FlexibleBottomSheetRoute<T> extends PopupRoute<T> {
               decoration: decoration,
               keyboardBarrierColor: keyboardBarrierColor,
               bottomSheetColor: bottomSheetColor,
+              borderTopRadius:borderTopRadius,
             )
           : FlexibleBottomSheet(
               minHeight: minHeight,
@@ -283,6 +290,7 @@ class _FlexibleBottomSheetRoute<T> extends PopupRoute<T> {
               decoration: decoration,
               keyboardBarrierColor: keyboardBarrierColor,
               bottomSheetColor: bottomSheetColor,
+              borderTopRadius:borderTopRadius,
             ),
     );
 
